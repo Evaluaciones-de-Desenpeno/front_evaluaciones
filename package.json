@@ -1,0 +1,19 @@
+{
+  "name": "front",
+  "version": "1.0.0",
+  "description": "este es el frontend para las vista de las evaluaciones de desenpeño de gestion humana ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Evaluaciones-de-Desenpeno/front_evaluaciones.git"
+  },
+  "author": "gian carlos giraldo fernandez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Evaluaciones-de-Desenpeno/front_evaluaciones/issues"
+  },
+  "homepage": "https://github.com/Evaluaciones-de-Desenpeno/front_evaluaciones#readme"
+}
