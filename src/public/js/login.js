@@ -12,7 +12,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ nombre: correo, contrasena: contrasena }),
+            body: JSON.stringify({ correo: correo, contrasena: contrasena }),
         });
 
         const data = await response.json();
@@ -21,9 +21,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         if (response.ok) {
             // Guardar el token y la información del usuario en localStorage
-            localStorage.setItem('token', data.token); // Guardar el token
+            localStorage.setItem('token', data.token);
+            localStorage.setItem('correo', data.usuario.correo);
+            localStorage.setItem('nombre', data.usuario.nombre);
+            localStorage.setItem('rol', data.usuario.rol_id);// Guardar el token
 
-            console.log("Token guardado:", data.token); // Verifica que el token se esté guardando correctamente
+            console.log("Token guardado:", data.token);
+            console.log("Rol guardado:", data.usuario.rol_id); // Verifica el rol guardado
+            console.log("Correo guardado:", data.usuario.correo); // Verifica el correo guardado
+            console.log("Nombre guardado:", data.usuario.nombre); // Verifica el nombre guardado
+             // Verifica que el token se esté guardando correctamente
             
 
             let tiempoRestante = 3;
@@ -37,7 +44,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
                 if (tiempoRestante <= 0) {
                     clearInterval(intervalo);
-                    window.location.href = 'http://localhost:2000/'; // Redirigir a la página principal
+                    window.location.href = '/historial'; // Redirigir a la página principal
                 }
             }, 1000);
         } else {
@@ -53,6 +60,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
     }
 });
 
+
+
+// Función para mostrar/ocultar la contraseña
 function togglePassword() {
     const passwordInput = document.getElementById('contrasena');
     const toggleIcon = document.getElementById('toggle-icon');
