@@ -44,7 +44,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
                 if (tiempoRestante <= 0) {
                     clearInterval(intervalo);
-                    window.location.href = '/historial'; // Redirigir a la página principal
+                    window.location.href = '/menu'; // Redirigir a la página principal
                 }
             }, 1000);
         } else {
