@@ -33,3 +33,20 @@
   width: 280px;
   height: auto;
 }
+
+.rol{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px;
+}
+
+.principal{
+  width: 100%;
+  height: 90%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr;
+  padding: 10px;
+  background-color: #3a6366;
+}
