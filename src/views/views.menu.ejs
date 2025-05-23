@@ -13,14 +13,52 @@
             <img src="/img/BETROST.png" alt="Logo" class="logo">
         </nav>
 
-        <div class="Objetivo"><h1 class="rol" id="rol"> Auxiliar Gestion humana </h1></div>
-        <div class="principal">
+        <div class="Objetivo"><h1 class="rol" id="rol">Auxiliar Gestion humana</h1></div>
 
+        <div class="principal" id="principal">
+            <!-- Formulario -->
+            <form class="formulario">
+                <label for="fecha-evaluacion">Fecha de evaluación:</label>
+                <input type="date" id="fecha-evaluacion" name="fecha-evaluacion">
+
+                <label for="nombre-evaluado">Nombre del evaluado:</label>
+                <input type="text" id="nombre-evaluado" name="nombre-evaluado">
+
+                <label for="cargo-evaluado">Cargo del evaluado:</label>
+                <input type="text" id="cargo-evaluado" name="cargo-evaluado">
+
+                <label for="nombre-evaluador">Nombre de Quien Evalúa:</label>
+                <input type="text" id="nombre-evaluador" name="nombre-evaluador">
+
+                <label for="cargo-evaluador">Cargo de Quien Evalúa:</label>
+                <input type="text" id="cargo-evaluador" name="cargo-evaluador">
+            </form>
+
+            <!-- Sección de preguntas -->
+            <div class="preguntas">
+                <div class="pregunta">
+                    <button type="button" class="pregunta-botón">
+                        Preguntas del Objetivo Principal
+                        <span class="indicador"></span>
+                    </button>
+                </div>
+                <div class="pregunta">
+                    <button type="button" class="pregunta-botón">
+                        Preguntas de Competencias Corporativas
+                        <span class="indicador"></span>
+                    </button>
+                </div>
+                <div class="pregunta">
+                    <button type="button" class="pregunta-botón">
+                        Preguntas de Competencias Blandas
+                        <span class="indicador"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="enviar-respuestas">Enviar Respuestas</button>
         </div>
-
-        
-
     </div>
-
 </body>
-</html> 
+</html>
