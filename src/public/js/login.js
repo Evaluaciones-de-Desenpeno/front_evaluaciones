@@ -25,6 +25,9 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             localStorage.setItem('correo', data.usuario.correo);
             localStorage.setItem('nombre', data.usuario.nombre);
             localStorage.setItem('rol', data.usuario.rol_id);// Guardar el token
+            localStorage.setItem('rol_nombre', data.usuario.rol_nombre);
+            localStorage.setItem('usuario_id', data.usuario.usuario_id);
+
 
             console.log("Token guardado:", data.token);
             console.log("Rol guardado:", data.usuario.rol_id); // Verifica el rol guardado
@@ -33,7 +36,7 @@ document.getElementById('loginForm').addEventListener('submit', async function (
              // Verifica que el token se esté guardando correctamente
             
 
-            let tiempoRestante = 3;
+            let tiempoRestante = 1;
             mensaje.textContent = `Ingreso Exitoso en ${tiempoRestante} segundos...`;
             mensaje.classList.remove('error');
             mensaje.classList.add('success');

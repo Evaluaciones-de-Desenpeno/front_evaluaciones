@@ -47,9 +47,7 @@
   width: 100%;
   height: 100vh; 
   padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+
 }
 
 /* Estilos para el formulario */
@@ -78,6 +76,7 @@
 .preguntas {
   display: flex;
   flex-direction: column;
+  padding: 10px;
   gap: 10px;
 }
 
@@ -106,22 +105,60 @@
 
 /* Estilos para el botón de envío */
 .enviar-respuestas {
-  width: 25%;
-  height: 25%;
-  background-color: #003333;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 4px;
-  font-size: 18px;
-  cursor: pointer;
-  transition: .2s;
-  margin-left: 38%;
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    margin: 1.5rem 0 1rem;
+    margin-left: 38%;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    border: none;
+    background-color: #13302E;
+    color: #E0FF00;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #E0FF00;
 }
 
 .enviar-respuestas:hover {
-  background-color: #2f8585;
+    background-color: #E0FF00;
+    color: #13302E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-.pregunta-botón:hover {
-  background-color: #3c8080;
+
+.enviar-respuestas:active {
+    transform: translateY(0);
 }
+
+.indicador {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-left: 10px;
+  background-color: gray; /* por defecto */
+  border: 2px solid #ccc;
+}
+
+.indicador.completado {
+  background-color: #28a745; /* verde éxito */
+  border-color: #28a745;
+}
+
+.pregunta-botón:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.enviar-respuestas:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  border-color: #999;
+}
+
+

@@ -1,8 +1,8 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    overflow: hidden;
-    font-family: 'Corbel';
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Corbel', Arial, sans-serif;
 }
 
 @font-face {
@@ -10,16 +10,8 @@
     src: url(../font/CORBEL.TTF);
 }
 
-.fondo {
+body {
     height: 100vh;
-    width: 100%;
-    background: #0000003d;
-    z-index: 9999;
-}
-
-.caja_segundaria {
-    height: 100vh;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,86 +19,175 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    position: relative;
+}
+
+
+.caja_segundaria {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    background-color: rgba(19, 48, 46, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 2;
+    margin: 20px;
+    position: relative;
+    overflow: visible;
 }
 
 .formulario {
-    height: 200px;
-    width: 50%;
-    background-color: transparent;
-    position: absolute;
-    z-index: 9999;
-    border-radius: 15px;
-    color: rgb(255, 255, 255);
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    margin: 10px;
+    align-items: center;
+    color: white;
+}
+
+.formulario h1 {
+    margin-bottom: 2rem;
+    color: #E0FF00;
+    font-size: 2rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.input-group {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    position: relative;
 }
 
 input {
-    margin: 10px;
-    width: 300px;
-    height: 10px;
-    border-radius: 10px;
-    border: none;
-    padding: 10px;
+    width: 100%;
+    padding: 14px 15px;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-color: rgba(255, 255, 255, 0.95);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #E0FF00;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(224, 255, 0, 0.3);
 }
 
 .password-container {
     position: relative;
-    display: inline-block;
+    width: 100%;
 }
 
 .toggle-password {
     position: absolute;
-    right: 20px;
-    top: 60%;
+    right: 15px;
+    top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    user-select: none;
+    z-index: 3;
 }
 
 .toggle-password img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.toggle-password:hover img {
+    opacity: 1;
 }
 
 .boton {
-    width: 320px;
-    height: 30px;
-    margin: 20px;
-    border-radius: 10px;
+    width: 100%;
+    max-width: 320px;
+    padding: 12px;
+    margin: 1.5rem 0 1rem;
+    border-radius: 8px;
     border: none;
-    padding: 1px;
-    transition: .2s;
-    cursor: pointer;
     background-color: #13302E;
     color: #E0FF00;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid #E0FF00;
 }
 
 .boton:hover {
-    background: #000000;
-    transition: .2s;
+    background-color: #E0FF00;
+    color: #13302E;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
+.boton:active {
+    transform: translateY(0);
+}
+
+
 .mensaje {
-    margin-top: 40%;
-    margin-left: 70%;
-    padding: 10px;
-    border-radius: 5px;
+    width: 100%;
+    padding: 12px;
+    margin: 1rem 0;
+    border-radius: 8px;
     text-align: center;
-    font-size: 14px;
-    position: absolute;
+    font-size: 0.95rem;
+    display: none;
 }
 
 .mensaje.error {
-    background-color: #ffebee;
-    color: #c62828;
+    background-color: rgba(198, 40, 40, 0.2);
+    color: #ffcdd2;
+    border: 1px solid #c62828;
+    display: block;
 }
 
 .mensaje.success {
-    background-color: #e8f5e9;
-    color: #2e7d32;
+    background-color: rgba(46, 125, 50, 0.2);
+    color: #c8e6c9;
+    border: 1px solid #2e7d32;
+    display: block;
+}
+
+.links-adicionales {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.links-adicionales a {
+    color: #E0FF00;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.links-adicionales a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+.res{
+    color: #E0FF00;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .caja_segundaria {
+        padding: 1.5rem;
+        margin: 15px;
+        width: 90%;
+    }
+    
+    .formulario h1 {
+        font-size: 1.7rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    input {
+        padding: 12px 15px;
+    }
 }

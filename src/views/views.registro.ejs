@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="/css/registro.css" />
+  <title>Registro</title>
+</head>
+<body>
+  <div class="caja_segundaria">
+    <form id="registroForm" class="formulario">
+      <h1>Registro de Usuario</h1>
+      <input type="text" placeholder="Nombre completo" id="nombre" required />
+      <input type="email" placeholder="Correo electrónico" id="correo" required />
+      <div class="password-container">
+                <input type="password" placeholder="Ingrese su contraseña" id="contrasena" required>
+                <span class="toggle-password" onclick="togglePassword()">
+                    <img src="img/cerrado.png" alt="Mostrar contraseña" id="toggle-icon">
+                </span>
+            </div>
+      <select id="rol_id" required>
+  <option value="">Cargando roles...</option>
+</select>
+
+      <button class="boton" type="submit">Registrar</button>
+    </form>
+    <div id="mensaje" class="mensaje"></div>
+  </div>
+  <script src="/js/registro.js"></script>
+</body>
+</html>

@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/menu.css">
-    <title>Usuario</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/menu.css">
+  <title>Usuario</title>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Navbar -->
-        <nav class="navbar">
-            <img src="/img/BETROST.png" alt="Logo" class="logo">
-        </nav>
+  <div class="container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <img src="/img/BETROST.png" alt="Logo" class="logo">
+    </nav>
 
-        <div class="Objetivo"><h1 class="rol" id="rol">Auxiliar Gestion humana</h1></div>
-
-        <div class="principal" id="principal">
-            <!-- Formulario -->
-            <form class="formulario">
-                <label for="fecha-evaluacion">Fecha de evaluación:</label>
-                <input type="date" id="fecha-evaluacion" name="fecha-evaluacion">
-
-                <label for="nombre-evaluado">Nombre del evaluado:</label>
-                <input type="text" id="nombre-evaluado" name="nombre-evaluado">
-
-                <label for="cargo-evaluado">Cargo del evaluado:</label>
-                <input type="text" id="cargo-evaluado" name="cargo-evaluado">
-
-                <label for="nombre-evaluador">Nombre de Quien Evalúa:</label>
-                <input type="text" id="nombre-evaluador" name="nombre-evaluador">
-
-                <label for="cargo-evaluador">Cargo de Quien Evalúa:</label>
-                <input type="text" id="cargo-evaluador" name="cargo-evaluador">
-            </form>
-
-            <!-- Sección de preguntas -->
-            <div class="preguntas">
-                <div class="pregunta">
-                    <button type="button" class="pregunta-botón">
-                        Preguntas del Objetivo Principal
-                        <span class="indicador"></span>
-                    </button>
-                </div>
-                <div class="pregunta">
-                    <button type="button" class="pregunta-botón">
-                        Preguntas de Competencias Corporativas
-                        <span class="indicador"></span>
-                    </button>
-                </div>
-                <div class="pregunta">
-                    <button type="button" class="pregunta-botón">
-                        Preguntas de Competencias Blandas
-                        <span class="indicador"></span>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Botón de envío -->
-            <button type="submit" class="enviar-respuestas">Enviar Respuestas</button>
-        </div>
+    <div class="Objetivo">
+      <h1 class="rol" id="rol">Auxiliar Gestion humana</h1>
     </div>
+
+    <div class="principal" id="principal">
+      <!-- Formulario -->
+      <form class="formulario">
+        <label for="fecha-evaluacion">Fecha de evaluación:</label>
+        <input type="date" id="fecha-evaluacion" name="fecha-evaluacion">
+
+        <label for="nombre-evaluado">Nombre del evaluado:</label>
+        <input type="text" id="nombre-evaluado" name="nombre-evaluado">
+
+        <label for="cargo-evaluado">Cargo del evaluado:</label>
+        <input type="text" id="cargo-evaluado" name="cargo-evaluado">
+
+        <label for="nombre-evaluador">Nombre de Quien Evalúa:</label>
+        <input type="text" id="nombre-evaluador" name="nombre-evaluador">
+
+        <label for="cargo-evaluador">Cargo de Quien Evalúa:</label>
+        <input type="text" id="cargo-evaluador" name="cargo-evaluador">
+      </form>
+
+      <!-- Sección de preguntas -->
+      <div class="preguntas">
+        <div class="pregunta" id="btn-objetivo">
+          <button type="button" class="pregunta-botón">
+            Preguntas del Objetivo Principal
+            <span class="indicador estado-objetivo"></span>
+          </button>
+        </div>
+        <div class="pregunta" id="btn-corporativas">
+          <button type="button" class="pregunta-botón">
+            Preguntas de Competencias Corporativas
+            <span class="indicador estado-corporativas"></span>
+          </button>
+        </div>
+        <div class="pregunta" id="btn-blandas">
+          <button type="button" class="pregunta-botón">
+            Preguntas de Competencias Blandas
+            <span class="indicador estado-blandas"></span>
+          </button>
+        </div>
+      </div>
+
+
+      <!-- Botón de envío -->
+      <button type="submit" class="enviar-respuestas">Enviar Respuestas</button>
+    </div>
+  </div>
+  <script src="/js/menu.js"></script>
 </body>
+
 </html>

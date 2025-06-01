@@ -10,3 +10,15 @@ export const menu = (req, res) => {
 export const objetivo = (req, res) => {
     res.render("views.objetivo.principal.ejs");
 }
+
+export const registro = (req, res) => {
+    res.render("views.registro.ejs");
+}
+
+export const coorporativas = (req, res) => {
+    res.render("views.competencias.coorporativas.ejs");
+}
+
+export const blandas = (req, res) => {
+    res.render("views.competencias.blandas.ejs");
+}
