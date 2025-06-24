@@ -33,6 +33,8 @@ document.getElementById('loginForm').addEventListener('submit', async function (
             console.log("Rol guardado:", data.usuario.rol_id); // Verifica el rol guardado
             console.log("Correo guardado:", data.usuario.correo); // Verifica el correo guardado
             console.log("Nombre guardado:", data.usuario.nombre); // Verifica el nombre guardado
+            console.log("Rol nombre guardado:", data.usuario.rol_nombre); // Verifica el nombre del rol guardado
+            
              // Verifica que el token se esté guardando correctamente
             
 

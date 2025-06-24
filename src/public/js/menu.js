@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const rolId = localStorage.getItem("rol");
 
     if (!nombre || !rolNombre || !rolId) {
-        window.location.href = "/login";
+        window.location.href = "/";
         return;
     }
 
