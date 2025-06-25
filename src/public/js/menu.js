@@ -8,41 +8,28 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
-    // Mostrar rol en el encabezado
     document.getElementById("rol").textContent = rolNombre;
-
-    // Rellenar datos del evaluado
     document.getElementById("nombre-evaluado").value = nombre;
     document.getElementById("cargo-evaluado").value = rolNombre;
 
-    // Marcar secciones completadas
     marcarEstado("respuestas_objetivo", "#btn-objetivo", ".estado-objetivo");
     marcarEstado("respuestas_corporativas", "#btn-corporativas", ".estado-corporativas");
     marcarEstado("respuestas_blandas", "#btn-blandas", ".estado-blandas");
 
-    // Verificar si se puede activar el botón final
     verificarFinalizacionEvaluacion();
 
-    // Redirecciones a vistas
     document.querySelectorAll(".pregunta-botón").forEach(btn => {
         const texto = btn.textContent.toLowerCase();
 
         if (texto.includes("objetivo")) {
-            btn.addEventListener("click", () => {
-                window.location.href = `/objetivo?rol_id=${rolId}`;
-            });
+            btn.addEventListener("click", () => window.location.href = `/objetivo?rol_id=${rolId}`);
         } else if (texto.includes("corporativas")) {
-            btn.addEventListener("click", () => {
-                window.location.href = `/coorporativas?rol_id=${rolId}`;
-            });
+            btn.addEventListener("click", () => window.location.href = `/coorporativas?rol_id=${rolId}`);
         } else if (texto.includes("blandas")) {
-            btn.addEventListener("click", () => {
-                window.location.href = `/blandas?rol_id=${rolId}`;
-            });
+            btn.addEventListener("click", () => window.location.href = `/blandas?rol_id=${rolId}`);
         }
     });
 
-    // Enviar respuestas finales
     document.querySelector(".enviar-respuestas").addEventListener("click", async (e) => {
         e.preventDefault();
 
@@ -62,6 +49,22 @@ document.addEventListener("DOMContentLoaded", () => {
             corporativas: JSON.parse(localStorage.getItem("respuestas_corporativas")),
             blandas: JSON.parse(localStorage.getItem("respuestas_blandas")),
         };
+
+        // Validar respuestas antes de enviar
+        const errores = validarRespuestasLocalStorage(respuestas);
+        if (errores.length > 0) {
+            alert("⚠️ Corrige los siguientes errores antes de enviar:\n\n" + errores.join("\n"));
+            return;
+        }
+
+        // ✅ Mostrar en consola lo que se enviará
+console.log("🔍 Respuestas que se enviarán:");
+["objetivo", "corporativas", "blandas"].forEach(tipo => {
+    console.log(`\n🔸 Sección: ${tipo.toUpperCase()}`);
+    respuestas[tipo].forEach(r => {
+        console.log(`Pregunta ID: ${r.pregunta_id}, Respuesta: ${r.respuesta}`);
+    });
+});
 
         const payload = {
             nombreEvaluado,
@@ -96,7 +99,34 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Marcar botón como completado
+// 🔎 Validar respuestas antes de enviar
+function validarRespuestasLocalStorage(respuestas) {
+    const errores = [];
+
+    const validarGrupo = (grupo, nombre) => {
+        if (!Array.isArray(grupo) || grupo.length === 0) {
+            errores.push(`❌ No hay respuestas para la sección: ${nombre}`);
+            return;
+        }
+
+        grupo.forEach((r, index) => {
+            if (typeof r.pregunta_id !== "number") {
+                errores.push(`❌ Pregunta inválida en ${nombre}, índice ${index}: ID no es un número`);
+            }
+            if (!["siempre", "nunca", "aveces", "a veces"].includes(r.respuesta?.toLowerCase())) {
+                errores.push(`❌ Respuesta inválida en ${nombre}, índice ${index}: "${r.respuesta}"`);
+            }
+        });
+    };
+
+    validarGrupo(respuestas.objetivo, "Objetivo");
+    validarGrupo(respuestas.corporativas, "Corporativas");
+    validarGrupo(respuestas.blandas, "Blandas");
+
+    return errores;
+}
+
+// ✅ Marcar botón como completado
 function marcarEstado(keyStorage, idBoton, claseIndicador) {
     const data = JSON.parse(localStorage.getItem(keyStorage));
     if (data && data.length > 0) {
@@ -107,16 +137,12 @@ function marcarEstado(keyStorage, idBoton, claseIndicador) {
     }
 }
 
-// Habilitar botón final si todo está respondido
+// ✅ Activar botón final si todas las secciones están completas
 function verificarFinalizacionEvaluacion() {
     const objetivo = localStorage.getItem("respuestas_objetivo");
     const corporativas = localStorage.getItem("respuestas_corporativas");
     const blandas = localStorage.getItem("respuestas_blandas");
 
     const botonFinal = document.querySelector(".enviar-respuestas");
-    if (objetivo && corporativas && blandas) {
-        botonFinal.disabled = false;
-    } else {
-        botonFinal.disabled = true;
-    }
+    botonFinal.disabled = !(objetivo && corporativas && blandas);
 }
